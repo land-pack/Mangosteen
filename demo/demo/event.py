@@ -1,13 +1,10 @@
-import pika
-from app.events.bar import bar_event
+from app.core.event import Event
+from app.core.log import logger
+from app.events import *
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
-channel.queue_declare(queue='hello')
-channel.basic_consume(bar_event,
-                      queue='hello',
-                      no_ack=True)
+if __name__ == '__main__':
+    logger.warning(" [*] Waiting for messages. To exit press CTRL+C")
+    Event.listen()    
 
 
-print(" [*] Waiting for messages. To exit press CTRL+C")
-channel.start_consuming()
+
