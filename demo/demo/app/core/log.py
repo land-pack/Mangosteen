@@ -12,7 +12,6 @@ if not os.path.exists(log_conf_path):
     raise Exception("Cannot load log config's file")
 
 
-
 process_name = sys.argv[0].split('.')[0]
 
 if 'job' in process_name:
@@ -22,10 +21,7 @@ elif 'event' in process_name:
 else:
     # stay with default
     pass
-    
+
 fileConfig(log_conf_path)
 logger = logging.getLogger('root')
-
-
-logger.warning("Logger starts with [%s], proceess argv [%s]", log_conf_path, sys.argv)
-
+logger.warning("Logger starts with [%s], argv [%s]", log_conf_path, sys.argv)

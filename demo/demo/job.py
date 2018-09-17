@@ -8,4 +8,3 @@ if __name__ == '__main__':
     scheduler.configure()
     scheduler.add_job(foo_fun, 'interval', seconds=5)
     scheduler.start()
-
