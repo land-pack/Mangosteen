@@ -12,6 +12,8 @@ env.user=os.environ['USER'] or 'frank'
 
 registry_url = os.environ['REG_URL']
 pro_name = 'Mangosteen'
+git_url = 'https://github.com/land-pack/Mangosteen.git'
+pro_path = '/Mangosteen/demo'
 
 
 def d_ps():
@@ -27,8 +29,8 @@ def d_build():
         if exists(pro_name):
             run('mv {} {}-bak'.format(pro_name, pro_name))
 
-        run('git clone https://github.com/land-pack/Mangosteen.git')
+        run('git clone {}'.format(git_url))
 
-    with cd('/data/code/Mangosteen/demo'):
-        run('docker build -t {}/demo .'.format(registry_url))
+    with cd('/data/code{}'.format(pro_path)):
+        run('docker build --build-arg registry_url=192.168.1.1/ak/base -t {}/demo .'.format(registry_url))
         run('docker push {}/demo'.format(registry_url))
