@@ -22,6 +22,16 @@ And if you want to check whether a cache still available. just do it
 
 	fab -f fabfile/online_conf.py redis-cli get ttl my_cache
 
+### Build your project in docker
+Before you do that you should configure your env and your docker's registry.
+Also you need to run your remote docker daemon, and a fix-directory in '/data/code'
+by default. there are some env you need to configure or you can just simply put it
+on your `fabfile.py`.
+
+
+    fab d_build
+
+
 
 ###How our project's structure look like?
 
