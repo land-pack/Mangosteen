@@ -7,6 +7,7 @@ from app.core.event import Event
 def bar_event(ch, method, properties, body):
     logger.warning(" >>>>>] Received %s", body)
 
+
 @Event.subscribe("new_queue")
 def new_queue(ch, method, properties, body):
     for i in range(1000):
