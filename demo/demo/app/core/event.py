@@ -28,6 +28,15 @@ class Event(object):
     def listen(cls):
         cls.channel.start_consuming()
 
+    @classmethod
+    def send(cls, queue, data):
+        cls.channel.queue_declare(queue)
+        cls.channel.basic_publish(
+            exchange='',
+            routing_key=queue,
+            body=data
+        )
+
 
 @Event.subscribe("xxxx")
 def test_event_x(ch, method, properties, body):
